@@ -19,7 +19,11 @@ while principal > 0:
     else:
         payment = base_payment
     principal = principal * (1+rate/12) - payment
+    if principal < 0:
+        payment = base_payment - principal
+        principal = 0
     total_paid = total_paid + payment
+    print(f"{month}\t{round(total_paid, 2)}\t{round(principal, 2)}")
     
     
 print(f"Total Paid: {total_paid:,.2f} over {month} months")
